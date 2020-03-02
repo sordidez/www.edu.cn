@@ -4,4 +4,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('login','LoginController@index')->name('admin.login');
     // 用户登入处理
     Route::post('login','LoginController@login')->name('admin.login');
+
+    // 用户首页
+    Route::get('index','IndexController@index')->name('admin.index');
+    // 用户欢迎页
+    Route::get('welcome','IndexController@welcome')->name('admin.welcome');
 });

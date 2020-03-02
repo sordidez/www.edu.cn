@@ -21,9 +21,7 @@
 <div class="header"></div>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
-
         @include('layout.msg')
-
         <form class="form form-horizontal" action="{{ route('admin.login') }}" method="post">
             {{--csrf验证--}}
             @csrf

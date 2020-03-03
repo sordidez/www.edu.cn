@@ -16,4 +16,9 @@ class IndexController extends Controller
     public function welcome(){
         return view('admin.index.welcome');
     }
+    // 退出后台
+    public function logout(){
+        auth()->logout();
+        return redirect(route('admin.login'))->with(['msg'=>'成功退出']);
+    }
 }

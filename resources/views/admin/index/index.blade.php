@@ -25,8 +25,7 @@
 <header class="navbar-wrapper">
     @include('layout.msg')
     <div class="navbar navbar-fixed-top">
-        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
-            <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
+        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">小p后台管理系统</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <nav class="nav navbar-nav">
                 <ul class="cl">
@@ -34,7 +33,6 @@
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
                             <li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-                            <li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
                             <li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
                         </ul>
                     </li>
@@ -67,9 +65,10 @@
         </div>
     </div>
 </header>
+
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
-        <dl id="menu-article">
+        {{--<dl id="menu-article">
             <dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -117,18 +116,18 @@
                     <li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
                 </ul>
             </dd>
-        </dl>
+        </dl>--}}
         <dl id="menu-admin">
             <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-                    <li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                    <li><a data-href="{{route('admin.user.index')}}" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                <li><a data-href="{{route('admin.role.index')}}" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+                {{-- <li><a data-href="{{route('admin.auth.index')}}" data-title="权限管理" href="javascript:void(0)">权限管理</a></li> --}}
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-tongji">
+        {{--<dl id="menu-tongji">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -153,9 +152,10 @@
                     <li><a data-href="system-log.html" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
                 </ul>
             </dd>
-        </dl>
+        </dl>--}}
     </div>
 </aside>
+
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
     <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
@@ -186,7 +186,8 @@
 <script type="text/javascript" src="{{ asset('admin') }}/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('admin') }}/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="{{ asset('admin') }}/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="{{ asset('admin') }}/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="{{ asset('admin') }}/static/h-ui.admin/js/H-ui.admin.js"></script>
+<!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="{{ asset('admin') }}/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>

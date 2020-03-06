@@ -5,7 +5,7 @@
 @endsection
 
 @section('navspan')
-首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span>角色列表
+首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span>权限列表
 @endsection
 
 @section('content')
@@ -20,24 +20,26 @@
             <thead>
                 <tr class="text-c">
                     <th width="80">ID</th>
-                    <th width="100">角色名</th>
+                    <th width="100">权限名称</th>
+                    <th width="100">路由别名</th>
                     <th width="100">操作</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $item)
+                @forelse ($data as $item)
                 <tr class="text-c">
                     <td>{{$item->id}}</td>
-                    <td><u style="cursor:pointer" class="text-primary"
-                            onclick="layer_show('{{$item->Role_name}}','member-show.html','360','400')">{{$item->Role_name}}</u>
-                    </td>
+                    <td>{{$item->AuthName}}</td>
+                    <td>{{$item->RouteName}}</td>
                     <td>删除和修改</td>
                 </tr>
-                @endforeach
+                @empty
+                    <tr class='text-c'>
+                        <td colspan='4'>暂无数据</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
-    </div>
-    {{-- 展示数据 --}}
-    {{$data->links()}}
+	</div>
 </div>
 @endsection

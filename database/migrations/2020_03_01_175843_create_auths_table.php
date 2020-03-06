@@ -7,16 +7,15 @@ use Illuminate\Database\Migrations\Migration;
 class CreateAuthsTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     *权限表
      * @return void
      */
     public function up()
-    {
+    {   // 权限表
         Schema::create('auths', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',100)->dafault('')->comment('权限名字');
-            $table->string('routename',100)->default('')->comment('路由名字');
+            $table->string('auth_name',100)->dafault('')->comment('权限名字');
+            $table->string('route_name',100)->default('')->comment('路由名字');
             $table->timestamps();
             $table->softDeletes();
         });

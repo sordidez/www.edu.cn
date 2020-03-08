@@ -5,39 +5,38 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthRequest;
 
 class AuthController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data=Auth::get();
-        return view('admin.auth.index',compact('data'));
+        $data = Auth::get();
+        return view('admin.auth.index', compact('data'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 添加权限页面
      */
     public function create()
-    {
-        //
+    {    
+        $data=Auth::where('pid',0)->orWhere('pid',1)->get();
+        return view('admin.auth.create',compact('data'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     *添加权限时执行的控制器
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(AuthRequest $request)
+    {   // 当添加权限的表单提交时，先到这，并且先执行AuthObserver中的方法
+        $model=Auth::create($request->all());        // dump($request->all()); 
+        return redirect()->route('admin.auth.index')->with(['msg'=>'【'.$model->auth_name.'】'.'添加成功']);
     }
 
     /**

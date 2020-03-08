@@ -152,8 +152,9 @@
 
                 // 修改和删除操作
                 var html = `<div class="btn-group">
-                            <a href="" class="	btn btn-secondary-outline radius">修改</a>
+                            <a href="" class="btn btn-secondary-outline radius">修改</a>
                             <a href="/admin/user/del/${data.id}" class="btn btn-danger-outline radius delbtn">删除</a>
+                            <a href="/admin/user/role/${data.id}" class="btn btn-secondary-outline radius">分配角色</a>
                           </div>`;
                 $(row).find('td:eq(5)').html(html);
             }

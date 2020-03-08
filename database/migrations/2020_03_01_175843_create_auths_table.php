@@ -14,8 +14,10 @@ class CreateAuthsTable extends Migration
     {   // 权限表
         Schema::create('auths', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('pid')->default(1)->comment('父级权限id');
+            $table->string('is_menu')->default(0)->comment('是否为菜单');
             $table->string('auth_name',100)->dafault('')->comment('权限名字');
-            $table->string('route_name',100)->default('')->comment('路由名字');
+            $table->string('route_name',100)->nullable()->comment('路由名字');
             $table->timestamps();
             $table->softDeletes();
         });

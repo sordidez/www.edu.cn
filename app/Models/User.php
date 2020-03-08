@@ -46,4 +46,8 @@ class User extends UserModel
         // 因为是获取器所以一定要return出去
         return date('Y年m月d日 H时i分s秒', strtotime($value));
     }
+    public function role(){
+        // 把用户和表和角色表关联起来
+        return $this->belongsTo(Role::class,'role_id','id');
+    }
 }

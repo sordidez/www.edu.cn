@@ -24,5 +24,9 @@ namespace App\Models;
  */
 class Role extends BaseModel
 {
-    //
+    public function auths(){
+        // 多对多的关系  把角色表和权限表关联起来
+        return $this->belongsToMany(Auth::class,'auth_role','role_id','auth_id');
+    }
 }
+        

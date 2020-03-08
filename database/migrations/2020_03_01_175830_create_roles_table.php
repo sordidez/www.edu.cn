@@ -19,7 +19,7 @@ class CreateRolesTable extends Migration
         });
         // 角色表和权限表的中间表
         Schema::create('auth_role', function (Blueprint $table) {
-            $table->unsignedInteger('role_id')->default(0)->comment('角色id');
+            $table->unsignedInteger('role_id')->default(1)->comment('角色id');
             $table->unsignedInteger('auth_id')->default(0)->comment('权限id');
             $table->timestamps();
             $table->softDeletes();

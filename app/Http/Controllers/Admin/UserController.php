@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -27,6 +28,16 @@ class UserController extends Controller
         // print_r($order);
         // print_r($dir);
         return (new User())->search($request, 'username');
+    }
+
+    // 给用户分配角色
+    public function role(User $user){
+        // dump($user->role()->get()->toArray());
+        // 读取全部的角色
+        $role=Role::get();
+        // 知道自己当前的角色
+        return view('admin.user.role',compact('user','role'));
+        // dump($role);
     }
 
     // 添加显示

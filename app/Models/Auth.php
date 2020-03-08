@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Observers\AuthObserver;
+
 /**
  * App\Models\Auth
  *
@@ -24,5 +26,10 @@ namespace App\Models;
  */
 class Auth extends BaseModel
 {
-    //
+    protected static function boot()
+    {
+        // 调用观察者 AuthObserver
+        static::observe(AuthObserver::class);
+        parent::boot();
+    }
 }

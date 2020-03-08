@@ -26,9 +26,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['che
 
     // ajax 请求数据
     Route::get('user/list', 'UserController@list')->name('admin.user.list');
+    // 给用户分配角色
+    Route::get('user/role/{user}','UserController@role')->name('admin.user.role');
     
     // 创建角色表的资源路由，资源控制器（一个控制器中包含了全部方法【admin.role.方法名】，不需要再定义一个方法又定义一个路由）
     Route::resource('role','RoleController',['as'=>'admin']);
+    // 给角色分配权限
+    Route::post('role/add_auth/{role}','RoleController@add_auth')->name('admin.role.add_auth');
 
     // 创建权限列表的资源路由
     Route::resource('auth','AuthController',['as'=>'admin']);

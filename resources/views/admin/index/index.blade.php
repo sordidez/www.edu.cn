@@ -131,18 +131,19 @@
             </dd>
         </dl>--}}
             <dl id="menu-admin">
-                <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                @foreach ($auth as $item)
+                <dt><i class="Hui-iconfont">&#xe62d;</i> {{$item['auth_name']}}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
                 </dt>
                 <dd>
                     <ul>
-                        <li><a data-href="{{route('admin.user.index')}}" data-title="管理员列表"
-                                href="javascript:void(0)">管理员列表</a></li>
-                        <li><a data-href="{{route('admin.role.index')}}" data-title="角色管理"
-                                href="javascript:void(0)">角色管理</a></li>
-                        <li><a data-href="{{route('admin.auth.index')}}" data-title="权限管理"
-                                href="javascript:void(0)">权限管理</a></li>
+                        @foreach ($item['sub'] as $val)
+                        <li><a data-href="{{route($val['route_name'])}}" data-title={{$val['auth_name']}}
+                        href="javascript:void(0)">{{$val['auth_name']}}</a></li>
+                        @endforeach
                     </ul>
                 </dd>
+                @endforeach
+                
             </dl>
             {{--<dl id="menu-tongji">
             <dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
